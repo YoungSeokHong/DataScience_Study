@@ -1,3 +1,4 @@
+from numpy import broadcast_arrays
 import pandas as pd
 
 iphone_df = pd.read_csv("data/iphone.csv", index_col=0)
@@ -5,3 +6,18 @@ print(iphone_df.loc[:, '출시일'])
 print(iphone_df.loc[:, '메모리'])
 print(iphone_df.loc['iPhone 8', '메모리'])
 print(iphone_df.loc['iPhone 8 Plus', :])
+print()
+
+broadcast_df = pd.read_csv("data/broadcast.csv", index_col=0)
+print(broadcast_df.loc[2016, 'KBS'])
+print(broadcast_df.loc[:,['KBS', 'JTBC']])
+
+samsong_df = pd.read_csv('data/samsong.csv')
+hyundee_df = pd.read_csv('data/hyundee.csv')
+df = pd.DataFrame({
+    'day': samsong_df['요일'],
+    'samsong' : samsong_df['문화생활비'],
+    'hyundee' : hyundee_df['문화생활비']
+})
+print(df)
+
